@@ -1,70 +1,3 @@
-/* 
-Snack2
-Creare un array di oggetti di squadre di calcio.
-Ogni squadra avrà diverse proprietà: nome, punti fatti, falli subiti.
-Nome sarà l’unica proprietà da compilare, le altre saranno tutte settate a 0.
-Generare numeri random al posto degli 0 nelle proprietà “punti” fatti e “falli subiti”.
-Infine, creiamo un nuovo array i cui elementi contengono solo nomi e falli subiti e stampiamo tutto in console.
-*/
-
-//create min and max for range of points and penalties
-const minPoints = 0;
-const maxPoints = 60;
-const minPenalty = 0;
-const maxPenalty = 25;
-
-//create an array containing football teams (could be inside a function also)
-const teams = [
-  {
-    nome: "Juventus",
-    'punti fatti': 0,
-    'falli subiti': 0
-  },
-  {
-    nome: "Milan",
-    'punti fatti': 0,
-    'falli subiti': 0
-  },
-  {
-    nome: "Inter",
-    'punti fatti': 0,
-    'falli subiti': 0
-  },
-  {
-    nome: "Lecce",
-    'punti fatti': 0,
-    'falli subiti': 0
-  },
-  {
-    nome: "Atalanta",
-    'punti fatti': 0,
-    'falli subiti': 0
-  },
-];
-
-//print the array just created
-console.log(teams);
-
-//call the function to fill points and penalties of teams array
-fillPointsAndPenalties();
-
-//print the array created before and filled with the new values
-console.log(teams);
-
-//call the function to create a new array with only names and penalties
-const onlyNamesAndPenaltiesArray = onlyNamesAndPenalties(teams);
-
-//print the new array
-console.log(onlyNamesAndPenaltiesArray);
-
-
-
-
-
-
-
-
-
 //FUNCTIONS
 
 /**
@@ -82,7 +15,13 @@ function generateRandomNumber(min, max) {
  * Function that fill the given array Points and Penalties   
  * @param {Array} teams 
  */
-function fillPointsAndPenalties() {
+function fillPointsAndPenalties(teams) {
+
+  //create min and max for range of points and penalties
+  const minPoints = 0;
+  const maxPoints = 60;
+  const minPenalty = 0;
+  const maxPenalty = 25;
 
   //fill all the objects points and penalties with random numbers
   for (let i = 0; i < teams.length; i++) {
@@ -94,6 +33,8 @@ function fillPointsAndPenalties() {
     teams[i]["punti fatti"] = randomNumberPoints;
     teams[i]["falli subiti"] = randomNumberPenalty;
   }
+
+  return teams;
 }
 
 /**
@@ -124,4 +65,54 @@ function onlyNamesAndPenalties(teams) {
 
   //return the new filled array
   return namesAndPenalties;
+}
+
+/**
+ * Function init
+ */
+function init() {
+
+  //create an array containing football teams (could be inside a function also)
+  const teams = [
+    {
+      nome: "Juventus",
+      'punti fatti': 0,
+      'falli subiti': 0
+    },
+    {
+      nome: "Milan",
+      'punti fatti': 0,
+      'falli subiti': 0
+    },
+    {
+      nome: "Inter",
+      'punti fatti': 0,
+      'falli subiti': 0
+    },
+    {
+      nome: "Lecce",
+      'punti fatti': 0,
+      'falli subiti': 0
+    },
+    {
+      nome: "Atalanta",
+      'punti fatti': 0,
+      'falli subiti': 0
+    },
+  ];
+
+  //print the array just created
+  console.log(teams);
+
+  //call the function to fill points and penalties of teams array
+  const teamsFilled = fillPointsAndPenalties(teams);
+
+  //print the array created before and filled with the new values
+  console.log(teamsFilled);
+
+  //call the function to create a new array with only names and penalties
+  const onlyNamesAndPenaltiesArray = onlyNamesAndPenalties(teams);
+
+  //print the new array
+  console.log(onlyNamesAndPenaltiesArray);
 }
